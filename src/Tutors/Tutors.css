@@ -1,0 +1,39 @@
+.tutors-div{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 500px;
+    
+}
+
+.tutors-h1{
+    font-size: 6rem;
+    font-weight: bold;
+    color: #D4AF37;
+    margin-bottom: 20px;
+    text-align: left;
+    animation: subtleGoldenGlow 3s ease-in-out infinite alternate;
+    line-height: 1.2;
+    margin-left: 100px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 200px;
+}
+
+@keyframes subtleGoldenGlow {
+    0% {
+        color: #D4AF37;
+        text-shadow: 0 0 5px rgba(212, 175, 55, 0.4), 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+    50% {
+        color: #FFD700;
+        text-shadow: 0 0 10px rgba(255, 223, 0, 0.6), 0 0 15px rgba(255, 223, 0, 0.5);
+    }
+    100% {
+        color: #D4AF37;
+        text-shadow: 0 0 5px rgba(212, 175, 55, 0.4), 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+}

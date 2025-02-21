@@ -1,0 +1,126 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #12181f;
+    color: #D4AF37;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Study Plan Container */
+.study-plan-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.study-plan-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    margin-bottom: 10px;
+}
+
+.study-plan-description {
+    font-size: 1.2rem;
+    color: #D4AF37;
+    opacity: 0.85;
+    margin-bottom: 30px;
+}
+
+.study-plan-select {
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    border: 2px solid #D4AF37;
+    border-radius: 8px;
+    background: transparent;
+    color: #D4AF37;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.study-plan-select:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Content after selection */
+.study-plan-content {
+    margin-top: 30px;
+    border: 1px solid #D4AF37;
+    padding: 20px 30px;
+    border-radius: 8px;
+    width: 100%; /* Ensure the content takes up full width */
+    line-height: 1.6; /* Improves readability */
+    word-wrap: break-word; /* Ensures words don’t overflow */
+    white-space: pre-line; /* Keeps new lines and formatting */
+    max-height: none; /* Removes height limitation */
+}
+
+.study-plan-content h2 {
+    font-size: 1.8rem;
+    color: #FFD700;
+    margin-bottom: 15px;
+}
+
+.study-plan-content p {
+    font-size: 1.1rem;
+    color: #D4AF37;
+}
+
+/* Smooth Button */
+.study-plan-button {
+    background: linear-gradient(135deg, #D4AF37, #FFD700);
+    color: #12181f;
+    padding: 14px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.study-plan-button:hover {
+    background: #12181f;
+    color: #FFD700;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+.study-plan-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .study-plan-title {
+        font-size: 1.8rem;
+    }
+
+    .study-plan-description,
+    .study-plan-content p {
+        font-size: 1rem;
+    }
+
+    .study-plan-select {
+        width: 100%;
+    }
+}

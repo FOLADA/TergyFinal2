@@ -1,0 +1,163 @@
+/* Box container */
+.periphrazed-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 24px;
+    background: #23262b;
+    border-radius: 14px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    margin-bottom: 18px;
+  }
+  
+  /* Title and button container */
+  .periphrazed-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  
+  /* Title inside the box */
+  .periphrazed-box-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e5c07b;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+  /* Button inside the box */
+  .periphrazed-box-button {
+    padding: 8px 16px;
+    background: #e5c07b;
+    color: #23262b;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .periphrazed-box-button:hover {
+    background: #d4a657;
+    transform: scale(1.05);
+  }
+  
+  /* Expanded container now uses two columns */
+  .periphrazed-expanded-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  /* Left content column */
+  .content-column {
+    flex: 1;
+  }
+  
+  /* Right note column with sticky positioning */
+  .note-column {
+    width: 300px;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 100px;
+  }
+  
+  /* Expanded content styling */
+  .periphrazed-expanded-content {
+    padding: 18px;
+    background: #2c3036;
+    color: #e0e0e0;
+    border-radius: 10px;
+    font-family: 'Merriweather', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: left; /* Changed from center to left */
+    white-space: pre-wrap;
+    font-weight: bold;
+  }
+  
+  .periphrazed-expanded-content p {
+    margin-bottom: 12px;
+  }
+  
+  /* Title container */
+  .periphrazed-title-container {
+    display: flex;
+    justify-content: center;
+    margin: 90px 0 30px;
+  }
+  
+  /* Page title */
+  .periphrazed-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #e5c07b;
+    letter-spacing: 1.5px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+  }
+  
+  /* Scrollbar customization */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 215, 0, 0.4);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #2c3036;
+  }
+  
+  /* Note container */
+  .note-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #2c3036;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #e5c07b;
+  }
+  
+  /* Note input field */
+  .note-container textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    background: #2c3036;
+    color: #e0e0e0;
+    border: 1px solid #e5c07b;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Merriweather', serif;
+    line-height: 1.5;
+    resize: vertical;
+  }
+  
+  /* Save button */
+  .note-container button {
+    padding: 10px 20px;
+    background: #e5c07b;
+    color: #23262b;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .note-container button:hover {
+    background: #d4a657;
+  }
+  
