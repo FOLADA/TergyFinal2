@@ -9,7 +9,6 @@ export const GetObj = async () => {
         Authorization: `Bearer ${apikey}`,
       },
     });
-    console.log("Fetched Users:", res.data);
     return res.data;
   } catch (error: any) {
     if (error.response) {
@@ -20,3 +19,4 @@ export const GetObj = async () => {
     throw error;
   }
 };
+

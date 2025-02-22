@@ -6,13 +6,12 @@ import "./Login.css";
 const apikey = import.meta.env.VITE_YOUR_CRUD_API_KEY;
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState("");
+  const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Redirect user to the home page if they are already logged in
   useEffect(() => {
     const storedUser = localStorage.getItem("loggedInUser");
     if (storedUser && location.pathname === "/login") {
@@ -31,24 +30,21 @@ const Login: React.FC = () => {
       });
 
       const users = res.data.items;
-
-      // Check if user exists with the given credentials
+      console.log(users)
       const foundUser = users.find(
-        (user: any) => user.username === username && user.password === password
+        (user: any) => user.email === email && user.password === password
       );
 
       if (foundUser) {
-        // Save the user to localStorage if found
-        localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
-        // Dispatch custom event to notify other components (e.g., Navbar) that auth status has changed
+        localStorage.setItem("loggedInUser", JSON.stringify(foundUser.userid));
         window.dispatchEvent(new Event("authChanged"));
-        navigate("/"); // Redirect to the home page
+        navigate("/"); 
       } else {
-        setError("დარეგისტრირებული არ ხარ"); // Display error if user not found
+        setError("დარეგისტრირებული არ ხარ");  
       }
     } catch (error: any) {
       console.error("Login Error:", error);
-      setError("შეცდომა! სცადე მოგვიანებით."); // Display error message for any issues
+      setError("შეცდომა! სცადე მოგვიანებით."); 
     }
   };
 
@@ -59,7 +55,7 @@ const Login: React.FC = () => {
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-div2">
             <label htmlFor="username" className="login-username">
-              სახელი:
+              იმეილი:
             </label>
             <input
               type="text"
@@ -67,8 +63,8 @@ const Login: React.FC = () => {
               name="username"
               className="login-input"
               placeholder="შეიყვანე სახელი..."
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
             />
           </div>
           <div className="login-div3">

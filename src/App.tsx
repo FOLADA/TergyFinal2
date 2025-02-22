@@ -21,11 +21,15 @@ import Animation from "./Animations/Animations";
 import ProtectedRoute from "./ProtectedRoute";
 import Tutors from "./Tutors/Tutors";
 import SpellCorrector from "./EssaystAI/FrontendAI";
+ 
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <Navbar />
+      <div style={{ marginBottom: "100px" }}>
+        <Navbar />
+      </div>
+
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {/* Public Routes */}
@@ -33,7 +37,6 @@ const App: React.FC = () => {
           <Route path="/შესვლა" element={<Login />} />
           <Route path="/რეგისტრაცია" element={<Signup />} />
           <Route path="/ჩვენს შესახებ" element={<AboutUs />} />
-
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/სიმპოზიუმი" element={<ChatFinal />} />
@@ -44,11 +47,26 @@ const App: React.FC = () => {
             <Route path="/ნაწარმოებანი/პერიფრაზი" element={<Periphrazed />} />
             <Route path="/ნაწარმოებანი/ანიმაცია" element={<Animation />} />
             <Route path="/ნაწარმოებანი/გეგმა" element={<StudyPlan />} />
-            <Route path="/ნაწარმოებანი/პერიფრაზი/ტესტი/დასაწყისი" element={<DasawyisiQuiz />} />
-            <Route path="/ნაწარმოებანი/პერიფრაზი/ტესტი/ამბავი როსტევან არაბთა მეფისა" element={<IItavi />} />
-            <Route path="/ნაწარმოებანი/პერიფრაზი/ტესტი/როსტევან მეფისგან და ავთანდილისგან ნადირობა" element={<IIItavi />} />
-            <Route path="/ნაწარმოებანი/პერიფრაზი/ტესტი/ნახვა არაბთა მეფისაგან მის ყმისა ვეფხისტყაოსნისა" element={<IVtavi />} />
-            <Route path="/ნაწარმოებანი/პერიფრაზი/ტესტი/თინათინისაგან ავთანდილის გაგზავნა მის ყმის საძებრად" element={<Vtavi />} />
+            <Route
+              path="/ნაწარმოებანი/პერიფრაზი/ტესტი/დასაწყისი"
+              element={<DasawyisiQuiz />}
+            />
+            <Route
+              path="/ნაწარმოებანი/პერიფრაზი/ტესტი/ამბავი როსტევან არაბთა მეფისა"
+              element={<IItavi />}
+            />
+            <Route
+              path="/ნაწარმოებანი/პერიფრაზი/ტესტი/როსტევან მეფისგან და ავთანდილისგან ნადირობა"
+              element={<IIItavi />}
+            />
+            <Route
+              path="/ნაწარმოებანი/პერიფრაზი/ტესტი/ნახვა არაბთა მეფისაგან მის ყმისა ვეფხისტყაოსნისა"
+              element={<IVtavi />}
+            />
+            <Route
+              path="/ნაწარმოებანი/პერიფრაზი/ტესტი/თინათინისაგან ავთანდილის გაგზავნა მის ყმის საძებრად"
+              element={<Vtavi />}
+            />
           </Route>
         </Routes>
       </Suspense>
