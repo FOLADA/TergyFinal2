@@ -17,16 +17,16 @@ const Tutors: React.FC = () => {
      });
 
      const users = res.data.items;
-     console.log(users);
 
      const findTutor = users
        .filter((user: any) => user.role === "რეპეტიტორი")
-       .sort((a: any, b: any) => b.rating - a.rating);  
 
      setTutors(findTutor);
    } catch (error: any) {
      console.error("Login Error:", error);
    }
+       
+   console.log(tutors.sort((a: any, b: any) => b.rating - a.rating))
  };
 
   useEffect(() => {

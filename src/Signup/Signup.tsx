@@ -15,8 +15,7 @@ const Signup: React.FC = () => {
   const [desc, setDesc] = useState("");
   const [rating, setRating] = useState(0)
   const maxLength = 200;
-
- 
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value.length <= maxLength) {
@@ -30,47 +29,55 @@ const Signup: React.FC = () => {
     phoneNumber: "",
     password: "",
     confirmPassword: "",
+    checkbox: "",
   });
   
   const navigate = useNavigate();
-  const validateForm = () => {
-    let newErrors = {
-      username: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-    };
-    let isValid = true;
-    if (!username.trim()) {
-      newErrors.username = "აუცილებელია სახელი";
-      isValid = false;
-    }
-    if (!email.trim()) {
-      newErrors.email = "აუცილებელია ელ.ფოსტა";
-      isValid = false;
-    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      newErrors.email = "ელ.ფოსტა არასწორია";
-      isValid = false;
-    }
-    if (!phoneNumber.trim() || isNaN(Number(phoneNumber))) {
-      newErrors.phoneNumber = "აუცილებელია ტელეფონის ნომერი (მხოლოდ ციფრები)";
-      isValid = false;
-    }
-    if (!password.trim()) {
-      newErrors.password = "აუცილებელია პაროლი";
-      isValid = false;
-    } else if (password.length < 6) {
-      newErrors.password = "პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო";
-      isValid = false;
-    }
-    if (password !== confirmPassword) {
-      newErrors.confirmPassword = "პაროლები არ ემთხვევა";
-      isValid = false;
-    }
-    setErrors(newErrors);
-    return isValid;
+const validateForm = () => {
+  let newErrors = {
+    username: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+    checkbox: "", 
   };
+  let isValid = true;
+
+  if (!username.trim()) {
+    newErrors.username = "აუცილებელია სახელი";
+    isValid = false;
+  }
+  if (!email.trim()) {
+    newErrors.email = "აუცილებელია ელ.ფოსტა";
+    isValid = false;
+  } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    newErrors.email = "ელ.ფოსტა არასწორია";
+    isValid = false;
+  }
+  if (!phoneNumber.trim() || isNaN(Number(phoneNumber))) {
+    newErrors.phoneNumber = "აუცილებელია ტელეფონის ნომერი (მხოლოდ ციფრები)";
+    isValid = false;
+  }
+  if (!password.trim()) {
+    newErrors.password = "აუცილებელია პაროლი";
+    isValid = false;
+  } else if (password.length < 6) {
+    newErrors.password = "პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო";
+    isValid = false;
+  }
+  if (password !== confirmPassword) {
+    newErrors.confirmPassword = "პაროლები არ ემთხვევა";
+    isValid = false;
+  }
+  if (role === "რეპეტიტორი" && !isChecked) {
+    newErrors.checkbox = "აუცილებელია თანხმობა";  
+    isValid = false;
+  }
+
+  setErrors(newErrors);
+  return isValid;
+};
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -188,7 +195,7 @@ const Signup: React.FC = () => {
             <>
               <div>
                 <label className="form-label">
-                  დაწერეთ თქვენს შესახებ: {" "}
+                  დაწერეთ თქვენს შესახებ:{" "}
                   {desc.length === 200 && (
                     <strong style={{ color: "red" }}>
                       აღწერა არ უნდა აღემატებოდეს 200 სიტყვას*
@@ -205,13 +212,44 @@ const Signup: React.FC = () => {
                 <label className="form-label">
                   თვითშეფასება 5 ბალიანი სისტემით:
                 </label>
-                <input type="number" max={5} min={0} className="form-input" value={rating} onChange={(e) => setRating(Number(e.target.value))}/>
+                <input
+                  type="number"
+                  max={5}
+                  min={0}
+                  className="form-input"
+                  value={rating}
+                  onChange={(e) => setRating(Number(e.target.value))}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "20px",
+                    margin: "10px",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    style={{ accentColor: "yellow" }}
+                    checked={isChecked}
+                    onChange={(e) => setIsChecked(e.target.checked)}
+                  />
+
+                  <p className="form-label">
+                    თანხმობა ვებსაიტზე ინფორმაციის გამოჩენისა და კონტაქტისა
+                  </p>
+                </div>
+                {errors.checkbox && (
+                  <p className="error-message">{errors.checkbox}</p>
+                )}
               </div>
             </>
           )}
         </div>
         <div>
-          <p>აირჩიე როლი</p>
+          <p className="form-label">აირჩიე როლი</p>
           <select
             className="form-input"
             value={role}
